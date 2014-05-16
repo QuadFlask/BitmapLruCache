@@ -1,4 +1,3 @@
-
 import android.graphics.Bitmap;
 import android.support.v4.util.LruCache;
 
@@ -32,9 +31,7 @@ public class BitmapLruCache extends LruCache<String, Bitmap> implements ImageCac
 
 	@Override
 	protected void entryRemoved(boolean evicted, String key, Bitmap oldValue, Bitmap newValue) {
-		super.entryRemoved(evicted, key, oldValue, newValue);
-		if (oldValue != null) oldValue.recycle();
-		remove(key);
+		oldValue.recycle();
 	}
 
 	public static int detectCacheSize() {
